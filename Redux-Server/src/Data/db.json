@@ -1,0 +1,30 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "title": "json-server",
+            "author": "typicode"
+        }
+    ],
+    "user": [
+        {
+            "id": 1,
+            "name": "Admin Server",
+            "role": "admin",
+            "email": "admin@in.com",
+            "phone": "5503-2234"
+        }
+    ],
+    "comments": [
+        {
+            "id": 1,
+            "body": "some coment",
+            "postId": "1"
+        }
+    ],
+    "profile": [
+        {
+            "name": "typicode"
+        }
+    ]
+}
