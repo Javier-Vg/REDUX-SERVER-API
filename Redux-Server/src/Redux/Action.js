@@ -19,3 +19,10 @@ return{
         payload:data
     }
 }
+
+export const FetchUserList=() => {
+    return (dispatch)=> {
+        dispatch(makeRequest());  //Quede acaa
+        axios.get('')
+    }
+}

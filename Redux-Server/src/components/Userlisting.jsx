@@ -9,11 +9,14 @@ function Userlisting() {
         <div className='card-body'>
             <table className='table table-bordered'>
                 <thead className='bg-dark text-white'>
-                    <tr>Code</tr>
-                    <tr>Name</tr>
-                    <tr>Email</tr>
-                    <tr>Phone</tr>
-                    <tr>Action</tr>
+                    <tr>
+                        <td>Code</td>
+                        <td>Name</td>
+                        <td>Email</td>
+                        <td>Phone</td>
+                        <td>Action</td>
+                    </tr>
+                    
                 </thead>
                 <tbody>
 

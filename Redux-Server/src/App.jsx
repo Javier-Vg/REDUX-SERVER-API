@@ -5,10 +5,13 @@ import Adducer from "./components/Adducer"
 import Userlisting from "./components/Userlisting"
 import Updateuser from "./components/Updateuser"
 import { ToastContainer } from "react-toastify"
+import {Provider} from "react-redux"
+import Store from "./Redux/Store"
+
 function App() {
 
   return (
-    <>
+    <Provider store={Store}>
       <div>
         <BrowserRouter>
         <div className="header">
@@ -29,7 +32,7 @@ function App() {
         </BrowserRouter>
         <ToastContainer></ToastContainer>
       </div>
-    </>
+    </Provider>
   )
 }
 
