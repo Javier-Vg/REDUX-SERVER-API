@@ -1,4 +1,5 @@
 import { FAIL_REQUEST, GET_USER_LIST, MAKE_REQUEST } from "./ActionType"
+import axios from "axios"
 
 export const makeRequest = ()=> {
 return{
@@ -22,7 +23,17 @@ return{
 
 export const FetchUserList=() => {
     return (dispatch)=> {
-        dispatch(makeRequest());  //Quede acaa
-        axios.get('')
+        dispatch(makeRequest()); 
+        
+        setTimeout(()=>{
+
+        },timeout);
+
+        axios.get('http://localhost:8000/user').then(res => {
+            const userlist = res.data;
+            dispatch(getUserList(userlist));
+        }).catch(err => {
+            dispatch(failRequest(err.message))
+        })
     }
 }
