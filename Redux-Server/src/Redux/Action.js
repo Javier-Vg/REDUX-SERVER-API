@@ -1,4 +1,4 @@
-import { FAIL_REQUEST, GET_USER_LIST, MAKE_REQUEST } from "./ActionType"
+import { DELETE_USER, FAIL_REQUEST, GET_USER_LIST, MAKE_REQUEST } from "./ActionType"
 import axios from "axios"
 
 export const makeRequest = ()=> {
@@ -21,19 +21,37 @@ return{
     }
 }
 
+export const deleteUser = (data)=> {
+    return{
+        type:DELETE_USER
+    }
+}
+
 export const FetchUserList=() => {
     return (dispatch)=> {
         dispatch(makeRequest()); 
         
-        setTimeout(()=>{
+        //setTimeout(()=>{
+            axios.get('http://localhost:3000/user').then(res => {
+                const userlist = res.data;
+                dispatch(getUserList(userlist));
+            }).catch(err => {
+                dispatch(failRequest(err.message))
+            })
+        //},1000);
+    }
+}
 
-        },timeout);
-
-        axios.get('http://localhost:8000/user').then(res => {
-            const userlist = res.data;
-            dispatch(getUserList(userlist));
-        }).catch(err => {
-            dispatch(failRequest(err.message))
-        })
+export const Removeuser=(code) => {
+    return (dispatch)=> {
+        dispatch(makeRequest()); 
+        axios.delete(`http://localhost:3000/user/${code}`)
+            .then(res => {
+                const userlist = res.data;
+                dispatch(deleteUser(userlist));
+            })
+            .catch(err => {
+                dispatch(failRequest(err.message))
+            })
     }
 }
