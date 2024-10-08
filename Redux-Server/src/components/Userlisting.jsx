@@ -85,15 +85,17 @@ const Userlisting = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => { //Mapea el estado de Redux al componente como props. En este caso, el estado state.user se asigna a la prop user.
+
   return {
     user: state.user,
   };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    loaduser: () => dispatch(FetchUserList()),
-    removeuser: (code) => dispatch(Removeuser(code)),
+    loaduser: () => dispatch(FetchUserList()), // Carga la lista de usuarios
+    removeuser: (code) => dispatch(Removeuser(code)), // Elimina un usuario
   };
 };
 

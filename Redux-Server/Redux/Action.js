@@ -9,28 +9,33 @@ export const makeRequest=()=>{
         type:MAKE_REQUEST
     }
 }
+
 export const failRequest=(err)=>{
     return{
         type:FAIL_REQUEST,
         payload:err
     }
 }
+
 export const geUserList=(data)=>{
     return{
         type:GET_USER_LIST,
         payload:data
     }
 }
+
 export const deleteUser=()=>{
     return{
         type:DELETE_USER
     }
 }
+
 export const addUser=()=>{
     return{
         type:ADD_USER
     }
 }
+
 export const updateUser=()=>{
     return{
         type:UPDATE_USER
@@ -103,6 +108,7 @@ export const FunctionUpdateUser=(data,code)=>{
      // }, 2000);
     }
 }
+
 export const FetchUserObj=(code)=>{ //Realiza una solicitud GET para obtener los datos de un usuario específico.
     return (dispatch)=>{
       dispatch(makeRequest());
@@ -117,3 +123,9 @@ export const FetchUserObj=(code)=>{ //Realiza una solicitud GET para obtener los
      
     }
 }
+
+
+
+
+//makeRequest marca el inicio del proceso asíncrono y permite que la aplicación
+// refleje el estado de carga mientras espera el resultado de la operación.
