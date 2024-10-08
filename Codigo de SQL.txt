@@ -1,0 +1,130 @@
+-- Active: 1723613378343@@localhost@3306
+CREATE DATABASE 
+    DEFAULT CHARACTER SET = 'utf8mb4';
+
+    show databases
+
+    create table Estudiantes(
+        id int primary key auto_increment,
+        Nombre varchar(50) not null,
+        Test varchar(50) not null
+    );
+
+    create table clases(
+        id int primary key auto_increment,
+        clase varchar(50) not null,
+        maestro varchar(50) not null,
+        idEstudiante int not null
+    );
+
+   drop table Estudiantes
+
+    INSERT INTO estudiantes (Nombre,Apellidos, Edad ) VALUES ("Juan", "Pérez", 18);
+    INSERT INTO estudiantes (Nombre,Apellidos, Edad) VALUES ("María"," García", 20);
+    INSERT INTO estudiantes (Nombre,Apellidos, Edad) VALUES ("Luis"," Rodríguez", 22);
+    INSERT INTO estudiantes (Nombre,Apellidos, Edad) VALUES ("Ana" ,"Martínez", 24);
+    INSERT INTO estudiantes (Nombre,Apellidos, Edad) VALUES ("Carlos" ,"López", 26);
+
+    INSERT INTO clases (clase, maestro,idEstudiante) VALUES ( "Matematicas","Julio",2);
+    INSERT INTO clases (clase, maestro,idEstudiante) VALUES ( "EstSoc","Andres",4);
+    INSERT INTO clases (clase, maestro,idEstudiante) VALUES ( "Estadistica","Yomaira",8);
+    INSERT INTO clases (clase, maestro,idEstudiante) VALUES ( "Programacion","Keylor",13);
+
+    -- Unificar tablas
+    -- Inner Join
+    SELECT Estudiantes.nombre, Clases.clase, Clases.maestro
+    FROM Estudiantes
+    INNER JOIN Clases
+    ON Estudiantes.Id = Clases.IdEstudiante;
+
+    -- Left join
+    SELECT estudiantes.nombre, Clases.clase
+    FROM estudiantes
+    full JOIN Clases ON Estudiantes.Id= Clases.IdEstudiante;
+
+    -- Mejor forma de usar el FULL
+    SELECT Estudiantes.nombre, Clases.clase, clases.maestro
+    FROM Estudiantes
+    LEFT JOIN Clases ON Estudiantes.Id = Clases.idEstudiante
+    UNION
+    SELECT Estudiantes.nombre, Clases.Clase, clases.maestro
+    FROM Estudiantes
+    RIGHT JOIN Clases ON Estudiantes.Id = Clases.idEstudiante
+    WHERE Estudiantes.Id IS NULL;
+
+
+    SELECT COUNT(id) AS 'Cantidad Calificaciones Iguales', id
+    FROM clases
+    GROUP BY id;
+
+
+    SELECT COUNT(edad) AS 'Cantidad Estudiantes', edad
+    FROM Estudiantes
+    WHERE edad > 18
+    GROUP BY edad
+    HAVING COUNT(*) = 1;
+
+    -- Unir 2 registros (tablas)
+    SELECT Estudiantes.Id, Estudiantes.nombre
+    FROM Estudiantes
+    UNION
+    SELECT clases.idestudiante, clases.clase FROM Clases;
+
+    -- Intersect
+    SELECT Estudiantes.id FROM Estudiantes
+    INTERSECT
+    SELECT Clases.id FROM clases;
+
+    -- Exist
+    SELECT * FROM Estudiantes e
+    WHERE EXISTS (
+    SELECT 1
+    FROM clases m
+    WHERE m.idestudiante = e.Id
+    );
+
+    drop table clases -- elimina la tabla
+
+    ALTER TABLE Estudiantes drop Column test
+
+    ALTER TABLE Estudiantes add Column apellidos varchar(20)
+
+    ALTER TABLE Estudiantes add Column edad varchar(20)
+
+
+    UPDATE Estudiantes
+    SET Edad = 21
+    WHERE Nombre = 'Luis';
+
+
+    DELETE FROM Estudiantes
+    WHERE Id = 3;
+
+    -- Ejercisio 3
+    SELECT * FROM Estudiantes;
+    
+    SELECT Nombre, Edad FROM Estudiantes;
+
+    -- Ver de edades de menor a mayor
+    SELECT Nombre, Edad FROM Estudiantes
+    ORDER BY Edad DESC;
+
+    -- Ver de edades de mayor a menor
+    SELECT Nombre, Edad FROM Estudiantes
+    ORDER BY Edad ASC;
+
+    -- Apellidos no esta definida
+    SELECT Nombre, Apellidos FROM Estudiantes
+    ORDER BY Apellidos DESC;
+
+    -- Ordenar Nombres y apellidos de manera ASC
+    SELECT * FROM estudiantes ORDER BY Nombre ASC, Apellidos ASC
+
+    -- EXTRAER REGISTROS ESPECIFICOS
+    SELECT * FROM Estudiantes WHERE Apellidos = "lopez"
+
+    -- Modificar tabla
+    UPDATE estudiantes SET nombre = "Javier" WHERE nombre = "luis";
+  
+    -- Eliminar registro de una tabla
+    DELETE FROM estudiantes nombre ="Juan";

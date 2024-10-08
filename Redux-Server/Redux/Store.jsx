@@ -4,7 +4,10 @@ import {thunk} from 'redux-thunk';
 import logger from "redux-logger";
 import { Reducer } from "./Reducer";
 
-const rootreducer = combineReducers({ user: Reducer });
+const rootreducer = combineReducers(
+  { user: Reducer 
+    //Aca añadirias otro reducer, 
+  });
 
 const Store = configureStore({
   reducer: rootreducer,

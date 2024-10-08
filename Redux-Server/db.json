@@ -1,0 +1,38 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "user": [
+    {
+      "id": "1",
+      "name": "Admin Server 69",
+      "email": "admin@in.com",
+      "phone": "69696969",
+      "role": "admin"
+    },
+    {
+      "id": "21ac",
+      "name": "lala888888",
+      "email": "23332fg",
+      "phone": "5555gfg",
+      "role": "staff"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some coment",
+      "postId": "1"
+    }
+  ],
+  "profile": [
+    {
+      "name": "typicode",
+      "id": "ee25"
+    }
+  ]
+}
